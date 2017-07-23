@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>box-shadow</title>
+	<link rel="stylesheet" href="css/demo.css">
+	<style type="text/css">
+		.demo {
+			width: 200px;
+			height: 200px;
+			color: #fff;
+			font-size: 20px;
+		}
+
+		h4 {
+			display: inline-block;
+		}
+
+		.ways-one {
+			/* css 3 */
+			background: url(img/rocket.svg) no-repeat yellowgreen;
+			background-position: right 20px bottom 10px;
+
+			/* 回退方案 */
+			background: url(img/rocket.svg) no-repeat right bottom yellowgreen;
+			background-position: right 20px bottom 10px;
+		}
+
+		.ways-two {
+			padding: 0 20px 10px 0;
+			background: url(img/rocket.svg) no-repeat right bottom yellowgreen;
+			background-origin: content-box;
+			box-sizing: border-box;
+		}
+
+		.ways-three {
+			background: url(img/rocket.svg) no-repeat yellowgreen;
+			background-position: calc(100% - 20px) calc(100% - 10px);
+		}
+	</style>
+
+	<style>
+		h4 {
+			background: yellow;
+		}
+	</style>
+</head>
+<body>
+	
+	<p>让元素的背景图定位在右下角距离左边 20px ,距离下面 10px</p>
+
+	<section>
+		<main>
+			
+			<div class="demo ways-one">Rocket</div>
+		</main>
+
+		<details open>
+			<summary>
+				<h4 style="color: red">主要代码</h4>
+				<p>利用 css3 对 background-position 的扩展功能,加之前的关键字之后添加我们的具体偏移量来实现这一功能</p>
+			</summary>
+			<pre data-hi-demo="h4 .ways-one .demo">
+.ways-one {
+	/* css 3 */
+	background: url(img/rocket.svg) no-repeat yellowgreen;
+	background-position: right 20px bottom 10px;
+
+	/* 回退方案 */
+	background: url(img/rocket.svg) no-repeat right bottom yellowgreen;
+	background-position: right 20px bottom 10px;
+}
+			</pre>
+		</details>
+	</section>
+
+
+	<section>
+		<main>
+			
+			<div class="demo ways-two">Rocket</div>
+		</main>
+
+		<details>
+			<summary>
+				<h4>主要代码</h4>
+				<p>利用 css3 对 background-origin 的功能,让背景的定位根据我们的预期来定位. </p>
+				<ul>
+					<li>border-box 以边框定位背景</li>
+					<li>padding-box(默认)以内边距定位背景</li>
+					<li>content-box 以内容定位背景</li>
+				</ul>
+			</summary>
+			<pre>
+.ways-two {
+	padding: 0 20px 10px 0;
+	background: url(img/rocket.svg) no-repeat right bottom yellowgreen;
+	background-origin: content-box;
+	box-sizing: border-box;
+}
+			</pre>
+		</details>
+	</section>
+
+
+	<section>
+		<main>
+			
+			<div class="demo ways-three">Rocket</div>
+		</main>
+
+		<details>
+			<summary>
+				<h4>主要代码</h4>
+				<p>使用 calc 计算方法</p>
+				
+			</summary>
+			<pre>
+.ways-three {
+	background: url(img/rocket.svg) no-repeat yellowgreen;
+	background-position: calc(100% - 20px) calc(100% - 10px);
+}
+			</pre>
+		</details>
+	</section>
+
+	<script src="hi-demo.js"></script>
+
+</body>
+</html>
